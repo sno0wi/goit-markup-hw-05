@@ -813,8 +813,8 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    max-width: 16px;
-    max-height: 16px;
+    width: 16px;
+    height: 16px;
     border: 1px solid var(--navy-blue-modal);
     border-radius: 2px;
     fill: transparent;
@@ -822,7 +822,7 @@ p {
 }
 
 
-.modal-checkbox-input:checked+.modal-checkbox-check {
+.modal-checkbox-input:checked+.modal-checkbox-label.modal-checkbox-check {
     background-color: var(--ocean);
     border: none;
     fill: var(--cloud);
