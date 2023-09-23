@@ -8,7 +8,7 @@
     --cornnflower: #E7E9FC;
     --grey: rgba(46, 47, 66, 0.70);
     --light-slate: #8E8F99;
-    --navy-blue-modal: rgba(46, 47, 66, 0.40);
+    --navy-blue-modal: rgba(46, 47, 66, 0.4);
     --dairy: #FCFCFC;
 }
 
@@ -671,7 +671,7 @@ p {
     transform: translate(-50%, -50%) scale(1);
     width: 408px;
     min-height: 584px;
-    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.14)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.12)) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.20));
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
     padding: 72px 24px 24px 24px;
@@ -697,7 +697,7 @@ p {
 
 .modal-close:focus,
 .modal-close:hover {
-    background-color: var(--iris);
+    background-color: var(--ocean);
     border: none;
 }
 
@@ -705,11 +705,11 @@ p {
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close:hover+.modal-close-icon {
+.modal-close:hover>.modal-close-icon {
     fill: var(--white);
 }
 
-.modal-close:focus+.modal-close-icon {
+.modal-close:focus>.modal-close-icon {
     fill: var(--white);
 }
 
@@ -756,7 +756,7 @@ p {
     border-color: var(--iris);
 }
 
-.modal-input-icon-person {
+.modal-input-icon {
     position: absolute;
     top: 50%;
     left: 16px;
@@ -766,12 +766,6 @@ p {
 
 .modal-input:focus+.modal-input-icon-person {
     fill: var(--iris);
-}
-
-.modal-input-icon {
-    position: absolute;
-    top: 8px;
-    left: 16px;
 }
 
 .modal-input:focus+.modal-input-icon {
@@ -790,7 +784,7 @@ p {
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.04em;
-    color: var();
+    color: var(--navy-blue-modal);
     width: 100%;
     background-color: transparent;
     padding: 8px 16px;
@@ -827,9 +821,6 @@ p {
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* .modal-checkbox-icon {
-    opacity: 0;
-} */
 
 .modal-checkbox-input:checked+.modal-checkbox-check {
     background-color: var(--ocean);
@@ -840,12 +831,6 @@ p {
 .user-privacy-link {
     color: var(--iris);
 }
-
-/* .modal-checkbox-input:checked+.modal-checkbox-check .modal-checkbox-icon {
-    opacity: 1;
-} */
-
-
 
 .modal-button {
     display: block;
