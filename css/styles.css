@@ -655,7 +655,7 @@ p {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-open {
@@ -665,39 +665,52 @@ p {
 }
 
 .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
     width: 408px;
-    max-width: 100%;
-    height: 584px;
-    max-height: 100%;
-    border: 1px solid black;
+    min-height: 584px;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.14)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.12)) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.20));
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
-    padding: 24px 24px;
+    padding: 72px 24px 24px 24px;
     background-color: var(--dairy);
 }
 
-.modal-close-wrap {
-    display: flex;
-    flex-direction: row-reverse;
-    position: relative;
-    margin-bottom: 24px;
-}
-
 .modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 24px;
+    top: 24px;
     width: 24px;
     height: 24px;
-    border: 1px solid var(--cornnflower);
+    background-color: var(--cornnflower);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close:focus,
 .modal-close:hover {
     background-color: var(--iris);
+    border: none;
 }
 
 .modal-close-icon {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close:hover+.modal-close-icon {
+    fill: var(--white);
+}
+
+.modal-close:focus+.modal-close-icon {
+    fill: var(--white);
 }
 
 .modal>p {
@@ -706,6 +719,7 @@ p {
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    color: var(--navyblue);
 }
 
 .modal-field {
@@ -714,8 +728,8 @@ p {
 
 .modal-label {
     color: var(--light-slate);
-    line-height: 1.2;
-    letter-spacing: 0.03em;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
     display: block;
     font-size: 12px;
     margin-bottom: 4px;
@@ -730,8 +744,10 @@ p {
     border-radius: 4px;
     height: 40px;
     width: 100%;
-    background-color: var(--dairy);
-    padding: 11px 38px;
+    background-color: transparent;
+    outline: transparent;
+    padding-left: 38px;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-input:focus,
@@ -742,8 +758,10 @@ p {
 
 .modal-input-icon-person {
     position: absolute;
-    top: 11px;
+    top: 50%;
     left: 16px;
+    transform: translateY(-50%);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-input:focus+.modal-input-icon-person {
@@ -760,15 +778,25 @@ p {
     fill: var(--iris);
 }
 
+.modal-field-textarea {
+    margin-bottom: 16px;
+}
+
 .modal-textarea {
     border: 1px solid var(--navy-blue-modal);
     border-radius: 4px;
     min-height: 120px;
     resize: none;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var();
     width: 100%;
-    background-color: var(--dairy);
+    background-color: transparent;
     padding: 8px 16px;
     margin-bottom: 16px;
+    outline: transparent;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-textarea::placeholder {
@@ -777,32 +805,47 @@ p {
 }
 
 .modal-checkbox {
-    display: flex;
-    gap: 8px;
-    align-content: center;
+    margin-bottom: 24px;
 }
 
 .modal-checkbox-label {
     font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--light-slate);
 }
 
 .modal-checkbox-check {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     max-width: 16px;
     max-height: 16px;
     border: 1px solid var(--navy-blue-modal);
-    border-radius: 3px;
+    border-radius: 2px;
+    fill: transparent;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-checkbox-icon {
+/* .modal-checkbox-icon {
     opacity: 0;
+} */
+
+.modal-checkbox-input:checked+.modal-checkbox-check {
+    background-color: var(--ocean);
+    border: none;
+    fill: var(--cloud);
 }
 
-.modal-checkbox-input:checked+.modal-checkbox-check .modal-checkbox-icon {
-    opacity: 1;
+.user-privacy-link {
+    color: var(--iris);
 }
+
+/* .modal-checkbox-input:checked+.modal-checkbox-check .modal-checkbox-icon {
+    opacity: 1;
+} */
+
+
 
 .modal-button {
     display: block;
