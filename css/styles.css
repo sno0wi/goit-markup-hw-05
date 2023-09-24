@@ -822,7 +822,7 @@ p {
 }
 
 
-.modal-checkbox-input:checked+.modal-checkbox-check {
+.modal-checkbox-input:checked+.modal-checkbox-label>.modal-checkbox-check {
     background-color: var(--ocean);
     border: none;
     fill: var(--cloud);
